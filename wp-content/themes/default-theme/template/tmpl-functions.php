@@ -27,8 +27,8 @@
     //  Render
     //
     function render_theme_component($component_name,$args = []){
-        include get_template_directory() . '/template-parts/components/' . $component_name . '.php';
+        include get_template_directory() . '/template/components/' . $component_name . '.php';
     }
     function render_theme_block($block_name,$args = []){
-        include get_template_directory() . '/template-parts/blocks/' . $block_name . '.php';
+        include get_template_directory() . '/template/blocks/' . $block_name . '.php';
     }
