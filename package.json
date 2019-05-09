@@ -1,0 +1,37 @@
+{
+  "name": "wordpress-custom-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp default",
+    "watch": "gulp watch_env --theme=ycj-theme",
+    "production": "gulp prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "arrive": "^2.4.1",
+    "bootstrap": "^4.1.1",
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-js-import": "^1.0.6",
+    "gulp-rev": "^8.1.1",
+    "gulp-rev-dist-clean": "^1.0.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-strip-css-comments": "^1.2.0",
+    "gulp-watch": "^4.3.11",
+    "rev-del": "^1.0.5",
+    "webpack": "^3.4.1"
+  },
+  "dependencies": {
+    "gulp-inject-string": "^1.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4",
+    "proxy-middleware": "^0.15.0",
+    "swiper": "^4.4.1",
+    "url": "^0.11.0"
+  }
+}

@@ -1,0 +1,125 @@
+//
+//  Funzioni
+//
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width + 1 + px}) {
+    @content;
+  }
+}
+
+@mixin tablet($orientation: l){
+
+  @if($orientation == l){
+
+    @media (min-width: #{$tablet-width + px}) and (max-width: #{$desktop-width + px}) and (orientation: landscape) {
+      @content;
+    }
+
+  }@else if($orientation == p){
+
+    @media (min-width: #{$tablet-width + px}) and (max-width: #{$desktop-width + px}) and (orientation: portrait) {
+      @content;
+    }
+
+  }@else {
+
+    @media (min-width: #{$tablet-width + px}) and (max-width: #{$desktop-width + px}) {
+      @content;
+    }
+
+  }
+}
+
+@mixin phone {
+  @media (max-width: #{$tablet-width - 1 + px}) {
+    @content;
+  }
+  @media (min-width: #{$tablet-width + px}) and (max-width: #{$desktop-width + px}) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin custom($min-width,$max-width){
+
+  @if($min-width == "phone"){
+    $min-width: $tablet-width + px;
+  } @else if($min-width == "tablet"){
+    $min-width: $desktop-width + px;
+  } @else {
+    $min-width: $min-width+px;
+  }
+
+  @if($max-width == "phone"){
+    $max-width: $tablet-width + px;
+  } @else if($max-width == "tablet"){
+    $max-width: $desktop-width + px;
+  } @else {
+    $max-width: $max-width+px;
+  }
+
+  @media (min-width: #{$min-width + px}) and (max-width: #{$max-width + px}) {
+    @content;
+  }
+
+}
+
+//
+//  Mixin Associativo
+//
+
+@mixin media($list...) {
+
+  @each $resolution in $list {
+
+    @if($resolution == phone){
+      @include phone {
+        @content;
+      }
+    }
+
+    @if($resolution == phone-landscape){
+      @media (max-width: 850px) and (orientation: landscape) {
+        @content;
+      }
+    }
+
+    @if($resolution == tablet-portrait){
+      @include tablet(p){
+        @content
+      }
+    }
+
+    @if($resolution == tablet-landscape){
+      @include tablet(l){
+        @content
+      }
+    }
+
+    @if($resolution == tablet){
+      @include tablet(p){
+        @content
+      }
+      @include tablet(l){
+        @content
+      }
+    }
+
+    @if($resolution == desktop){
+      @include desktop{
+        @content
+      }
+    }
+
+  }
+
+}
+
+//
+//  Browser support
+//
+@mixin edge{
+  @supports (-ms-ime-align:auto) {
+    @content;
+  }
+}
