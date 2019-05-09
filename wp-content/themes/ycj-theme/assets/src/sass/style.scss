@@ -1,19 +1,28 @@
 //
-//  Variabili
+//  Style - Include
 //
 
-$tablet-width: 768;
-$desktop-width: 1024;
+// Variables and Fonts
+@import "variables";
+@import "fonts";
 
-//
-//  Load libraries
-//
+// Lib
 
 @import "reset";
 @import "../../../../../../node_modules/bootstrap/scss/bootstrap";
 
-//
-//  Functions
-//
+// Function, mixin
 
+@import "functions";
+@import "mixin";
 @import "media-query";
+
+//  Common style
+
+@import "DOM";
+
+//  Componets
+
+//  Blocks
+
+//  Pages

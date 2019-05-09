@@ -1,0 +1,42 @@
+//
+//  Functions
+//
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function rem($values) {
+  $base-size: strip-unit($font-desktop-p);
+  $px: ();
+  $rem: ();
+
+  @each $value in $values {
+
+    @if $value == 0 or $value == auto {
+
+      $px: append($px, $value);
+      $rem: append($rem, $value);
+    } @else {
+      $unit: unit($value);
+      $val: strip-unit($value);
+
+      @if $unit == 'px' {
+        $px: append($px, $value);
+        $rem: append($rem,  ($val / $base-size + rem));
+      }
+
+      @if $unit == 'rem' {
+        $px: append($px,  ($val * $base-size + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {
+    @return $px;
+  } @else {
+    @return $rem;
+  }
+
+}
