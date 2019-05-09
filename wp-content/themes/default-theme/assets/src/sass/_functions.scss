@@ -7,7 +7,7 @@
 }
 
 @function rem($values) {
-  $base-size: strip-unit($font-desktop-p);
+  $base-size: strip-unit($size-font-base);
   $px: ();
   $rem: ();
 
@@ -38,5 +38,14 @@
   } @else {
     @return $rem;
   }
+
+}
+
+@function em($font-size,$line-height) {
+
+  $font-size: strip-unit($font-size);
+  $line-height: strip-unit($line-height);
+
+  @return (($line-height / $font-size) + em);
 
 }

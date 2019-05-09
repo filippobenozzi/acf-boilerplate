@@ -3,7 +3,7 @@
 //
 
 @mixin desktop {
-  @media (min-width: #{$desktop-width + 1 + px}) {
+  @media (min-width: #{$width-md + 1 + px}) {
     @content;
   }
 }
@@ -12,19 +12,19 @@
 
   @if($orientation == l){
 
-    @media (min-width: #{$tablet-width + px}) and (max-width: #{$desktop-width + px}) and (orientation: landscape) {
+    @media (min-width: #{$width-md + px}) and (max-width: #{$width-xl + px}) and (orientation: landscape) {
       @content;
     }
 
   }@else if($orientation == p){
 
-    @media (min-width: #{$tablet-width + px}) and (max-width: #{$desktop-width + px}) and (orientation: portrait) {
+    @media (min-width: #{$width-md + px}) and (max-width: #{$width-xl + px}) and (orientation: portrait) {
       @content;
     }
 
   }@else {
 
-    @media (min-width: #{$tablet-width + px}) and (max-width: #{$desktop-width + px}) {
+    @media (min-width: #{$width-md + px}) and (max-width: #{$width-xl + px}) {
       @content;
     }
 
@@ -32,10 +32,10 @@
 }
 
 @mixin phone {
-  @media (max-width: #{$tablet-width - 1 + px}) {
+  @media (max-width: #{$width-md - 1 + px}) {
     @content;
   }
-  @media (min-width: #{$tablet-width + px}) and (max-width: #{$desktop-width + px}) and (orientation: portrait) {
+  @media (min-width: #{$width-md + px}) and (max-width: #{$width-md + px}) and (orientation: portrait) {
     @content;
   }
 }
@@ -43,17 +43,17 @@
 @mixin custom($min-width,$max-width){
 
   @if($min-width == "phone"){
-    $min-width: $tablet-width + px;
+    $min-width: $width-md + px;
   } @else if($min-width == "tablet"){
-    $min-width: $desktop-width + px;
+    $min-width: $width-md + px;
   } @else {
     $min-width: $min-width+px;
   }
 
   @if($max-width == "phone"){
-    $max-width: $tablet-width + px;
+    $max-width: $width-md + px;
   } @else if($max-width == "tablet"){
-    $max-width: $desktop-width + px;
+    $max-width: $width-md + px;
   } @else {
     $max-width: $max-width+px;
   }
@@ -79,7 +79,7 @@
     }
 
     @if($resolution == phone-landscape){
-      @media (max-width: 850px) and (orientation: landscape) {
+      @media (max-width: $width-md) and (orientation: landscape) {
         @content;
       }
     }
@@ -120,6 +120,46 @@
 //
 @mixin edge{
   @supports (-ms-ime-align:auto) {
+    @content;
+  }
+}
+
+@mixin firefox{
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin ie{
+  @media \0screen\,screen\9 {
+    @content;
+  }
+  @media screen and (min-width:0\0) and (min-resolution: .001dpcm){
+    @content;
+  }
+  @media screen and (min-width:0\0) {
+    @content;
+  }
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+@mixin safari {
+  @media not all and (min-resolution: .001dpcm) {
+    @media {
+      @content
+    }
+  }
+  @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio: 0) {
+    @media{
+      @content;
+    }
+  }
+}
+
+@mixin chrome{
+  @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
     @content;
   }
 }

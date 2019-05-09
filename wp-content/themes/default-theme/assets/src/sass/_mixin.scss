@@ -4,7 +4,7 @@
 
 //Fonts
 
-@mixin fluid-typography($max-font-size,$min-font-size,$max-vw:$width-max,$min-vw:$width-min){
+@mixin fluid-typography($max-font-size,$min-font-size,$max-vw:$width-xl,$min-vw:$width-md){
   $u1: unit($min-vw);
   $u2: unit($max-vw);
   $u3: unit($min-font-size);

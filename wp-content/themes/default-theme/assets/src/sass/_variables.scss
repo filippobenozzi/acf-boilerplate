@@ -1,8 +1,15 @@
 //
-//  Variabili
+//  Media Query - Breakpoints
 //
 
-$phone-width: 480; //Bootstrap 4 standard
-$tablet-width: 768; //Bootstrap 4 standard
-$desktop-width: 992; //Bootstrap 4 standard or 1200
+$width-sm: 576; //Bootstrap 4 standard
+$width-md: 768; //Bootstrap 4 standard
+$width-lg: 992; //Bootstrap 4 standard
+$width-xl: 1200; //Bootstrap 4 standard or 1200
 
+//
+//  Font size
+//
+
+$size-font-base: 16;
+$size-font-base-mobile: 14;
