@@ -30,20 +30,15 @@ if( function_exists('acf_add_options_page') ) {
         'menu_title'	=> 'Campi globali',
         'menu_slug' 	=> 'theme-general-settings',
         'capability'	=> 'edit_posts',
-        'redirect'		=> false
+        'redirect'		=> true
     ));
 
-//	acf_add_options_sub_page(array(
-//		'page_title' 	=> 'Theme Header Settings',
-//		'menu_title'	=> 'Header',
-//		'parent_slug'	=> 'theme-general-settings',
-//	));
-//
-//	acf_add_options_sub_page(array(
-//		'page_title' 	=> 'Theme Footer Settings',
-//		'menu_title'	=> 'Footer',
-//		'parent_slug'	=> 'theme-general-settings',
-//	));
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Google Maps - API',
+        'menu_title'	=> 'Google Maps - API',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
 }
 
 
