@@ -1,93 +1,148 @@
-//
-// End theme config
-//
-
+var babelify = require('babelify');
+var browserSync = require('browser-sync');
+var browserify = require('browserify');
+var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
+var plugins = require('gulp-load-plugins');
+var source = require('vinyl-source-stream');
 var gutil = require('gulp-util');
-var jsImport = require('gulp-js-import');
-var sass = require('gulp-sass');
-var concat = require('gulp-concat');
-var watch = require('gulp-watch');
-var sourcemaps = require('gulp-sourcemaps');
-var stripCssComments = require('gulp-strip-css-comments');
-var rev = require('gulp-rev');
-var revDel = require('rev-del');
-var inject = require('gulp-inject-string');
-var browserSync = require('browser-sync').create();
 
-//
-//  Theme config
-//
+/* ----------------- */
+/* Path
+/* ----------------- */
 
-var theme_name = gutil.env.theme;
+var themeName = gutil.env.theme;
+var themeAssetPath = 'wp-content/themes/'+themeName+'/assets';
 
+/* ----------------- */
+/* Development
+/* ----------------- */
 
-gulp.task('watch_env', ['sass', 'scripts', 'watch']);
-gulp.task('prod', ['sass_production','scripts_production']);
-
-
-gulp.task('sass', function () {
-    gulp.src('wp-content/themes/'+theme_name+'/assets'+'/src/sass/**/*.scss')
-        .pipe(sass({
-            sourceComments: 'map',
-            sourceMap: 'sass',
-            outputStyle: 'nested'
-        }).on('error', sass.logError))
-        .pipe(sourcemaps.init())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('wp-content/themes/'+theme_name+'/assets'+'/dist/css'));
-});
-
-gulp.task('scripts', function() {
-    return gulp.src('wp-content/themes/'+theme_name+'/assets'+'/src/js/index.js')
-        .pipe(jsImport({hideConsole: true}))
-        .pipe(concat('bundle.js'))
-        .pipe(gulp.dest('wp-content/themes/'+theme_name+'/assets'+'/dist/js/'));
-});
-
-gulp.task('inject_browser_sync', function(){
-    gulp.src('wp-content/themes/'+theme_name+'/'+'footer.php')
-        .pipe(gulp.dest('wp-content/themes/'+theme_name+'/'));
-});
-
-gulp.task('watch', function () {
-    gulp.watch('wp-content/themes/'+theme_name+'/assets'+'/src/sass/**/*.scss', ['sass']).on('change', browserSync.reload);
-    gulp.watch('wp-content/themes/'+theme_name+'/assets'+'/src/js/**/*.js', ['scripts']).on('change', browserSync.reload);
-});
-
-gulp.task('browser-sync', function() {
-
-    browserSync.init({
-        proxy: 'vega.test',
-        injectChanges: true
+gulp.task('development', ['scripts', 'styles'], () => {
+    browserSync({
+        'server': './',
+        'snippetOptions': {
+            'rule': {
+                'match': /<\/body>/i,
+                'fn': (snippet) => snippet
+            }
+        }
     });
 
+    gulp.watch(themeAssetPath + '/src/sass/**/*.scss', ['styles']);
+    gulp.watch(themeAssetPath + '/src/js/**/*.js', ['scripts']);
+    gulp.watch('./*.php', browserSync.reload);
 });
 
-gulp.task('sass_production', function () {
-    gulp.src('wp-content/themes/'+theme_name+'/assets'+'/sass/**/*.scss')
-        .pipe(sass({
-            outputStyle: 'nested'
-        }).on('error', sass.logError))
-        .pipe(rev())
-        .pipe(gulp.dest('wp-content/themes/'+theme_name+'/assets'+'/css'))
-        .pipe(rev.manifest('wp-content/themes/'+theme_name+'/assets'+'/rev-manifest.json',{
-            base: 'wp-content/themes/'+theme_name+'/assets',
-            merge: true
-        }))
-        .pipe(revDel('wp-content/themes/'+theme_name+'/assets'+'/rev-manifest.json'))
-        .pipe(gulp.dest('wp-content/themes/'+theme_name+'/assets'));
+
+/* ----------------- */
+/* Scripts
+/* ----------------- */
+
+gulp.task('scripts', () => {
+    return browserify({
+        'entries': [themeAssetPath + '/src/js/main.js'],
+        'debug': true,
+        'transform': [
+            babelify.configure({
+                'presets': ['es2015', 'react']
+            })
+        ]
+    })
+        .bundle()
+        .on('error', function () {
+            var args = Array.prototype.slice.call(arguments);
+
+            plugins().notify.onError({
+                'title': 'Compile Error',
+                'message': '<%= error.message %>'
+            }).apply(this, args);
+
+            this.emit('end');
+        })
+        .pipe(source('bundle.js'))
+        .pipe(buffer())
+        .pipe(plugins().sourcemaps.init({'loadMaps': true}))
+        .pipe(plugins().sourcemaps.write('.'))
+        .pipe(gulp.dest(themeAssetPath + '/dist/js/'))
+        .pipe(browserSync.stream());
 });
 
-gulp.task('scripts_production', function() {
-    return gulp.src(scripts_array)
-        .pipe(concat('all.js'))
-        .pipe(rev())
-        .pipe(gulp.dest('wp-content/themes/'+theme_name+'/assets'+'/js/'))
-        .pipe(rev.manifest('wp-content/themes/'+theme_name+'/assets'+'/rev-manifest.json',{
-            base: 'wp-content/themes/'+theme_name+'/assets',
-            merge: true
-        }))
-        .pipe(revDel('wp-content/themes/'+theme_name+'/assets'+'/rev-manifest.json'))
-        .pipe(gulp.dest('wp-content/themes/'+theme_name+'/assets'));
+
+/* ----------------- */
+/* Styles
+/* ----------------- */
+
+gulp.task('styles', () => {
+    return gulp.src(themeAssetPath + '/src/sass/**/*.scss')
+        .pipe(plugins().sourcemaps.init())
+        .pipe(plugins().sass().on('error', plugins().sass.logError))
+        .pipe(plugins().sourcemaps.write())
+        .pipe(gulp.dest(themeAssetPath + '/dist/css'))
+        .pipe(browserSync.stream());
 });
+
+
+/* ----------------- */
+/* HTML
+/* ----------------- */
+
+// gulp.task('html', ['cssmin'], () => {
+//     return gulp.src('index.html')
+//         .pipe(critical.stream({
+//             'base': 'build/',
+//             'inline': true,
+//             'extract': true,
+//             'minify': true,
+//             'css': ['./build/css/style.css']
+//         }))
+//         .pipe(gulp.dest('build'));
+// });
+
+
+/* ----------------- */
+/* Cssmin
+/* ----------------- */
+
+gulp.task('cssmin', () => {
+    return gulp.src(themeAssetPath + '/src/sass/**/*.scss')
+        .pipe(plugins().sass({
+            'outputStyle': 'compressed'
+        }).on('error', plugins().sass.logError))
+        .pipe(gulp.dest(themeAssetPath + '/dist/css'));
+});
+
+
+/* ----------------- */
+/* Jsmin
+/* ----------------- */
+
+gulp.task('jsmin', () => {
+    var envs = plugins().env.set({
+        'NODE_ENV': 'production'
+    });
+
+    return browserify({
+        'entries': [themeAssetPath + '/src/js/main.js'],
+        'debug': false,
+        'transform': [
+            babelify.configure({
+                'presets': ['es2015', 'react']
+            })
+        ]
+    })
+        .bundle()
+        .pipe(source('bundle.js'))
+        .pipe(envs)
+        .pipe(buffer())
+        .pipe(plugins().uglify())
+        .pipe(envs.reset)
+        .pipe(gulp.dest(themeAssetPath + '/dist/js/'));
+});
+
+/* ----------------- */
+/* Taks
+/* ----------------- */
+
+gulp.task('default', ['development']);
+gulp.task('deploy', ['cssmin', 'jsmin']);
