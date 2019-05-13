@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
 
     <?php wp_head(); ?>
+    <title><?php wp_title('&ndash;','true','right'); ?><?php bloginfo('name'); ?></title>
     <meta name="keywords" content="#" />
 
     <meta name="author" content="Dinamiza">
