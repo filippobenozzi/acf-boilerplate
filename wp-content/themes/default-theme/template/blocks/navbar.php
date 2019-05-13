@@ -17,7 +17,7 @@
                 'link_before'     => '',
                 'link_after'      => '',
                 'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                'walker'          => new wp_bootstrap_navwalker()
+                'walker'          => new WP_Bootstrap_Navwalker()
             )); ?>
         </div>
     </nav>

@@ -8,7 +8,7 @@ include_once(get_template_directory() .'/config/theme-config.php');
 /*
  *  Theme navbar generator
  * */
-require_once(get_template_directory().'/config/wp_bootstrap_navwalker.php');
+require_once(get_template_directory().'/config/class-wp-bootstrap-navwalker.php');
 
 /*
  *  Custom images size
