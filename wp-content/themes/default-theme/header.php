@@ -34,4 +34,4 @@
         <h3><a href="http://www.dinamiza.it/" target="_blank" title="Web agency">Dinamiza</a></h3>
     </section><!--infocontent-->
 
-    <?php render_block('navbar'); ?>
+    <?php render_theme_block('navbar'); ?>
