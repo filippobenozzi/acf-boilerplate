@@ -2,7 +2,6 @@
 // Load jQuery plugins
 //
 
-import $ from 'jquery';
 import 'bootstrap';
 import 'arrive';
 

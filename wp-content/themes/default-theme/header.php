@@ -21,14 +21,10 @@
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/common/img/favicon.ico">
     <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() ?>/common/img/apple-touch-icon.png">
 
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/dist/css/style.css">
-
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="common/js/html5.js"></script>
     <![endif]-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
 
 </head>
 

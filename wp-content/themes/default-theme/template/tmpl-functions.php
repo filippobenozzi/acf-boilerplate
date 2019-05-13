@@ -40,3 +40,17 @@
         include get_template_directory() . '/template/blocks/' . $block_name . '.php';
 
     }
+
+    //
+    //  Theme Javascript
+    //
+    $my_script_url = get_template_directory_uri() . '/assets/dist/js/bundle.js';
+    $my_script_mod = filemtime(get_template_directory() . '/assets/dist/js/bundle.js');
+    wp_enqueue_script('my-theme-script', $my_script_url, array(), $my_script_mod, true);
+
+    //
+    //  Theme Style
+    //
+    $my_style_url = get_template_directory_uri() . '/assets/dist/css/style.css';
+    $my_style_mod = filemtime(get_template_directory() . '/assets/dist/css/style.css');
+    wp_enqueue_style('my-theme-script', $my_style_url, array(), $my_style_mod, 'all');
