@@ -49,27 +49,3 @@ table {
 html{
   margin: 0 !important;
 }
-
-//
-//  Mixin delete
-//
-
-@mixin delete_hover{
-  &:hover,&:focus{
-    color: initial;
-    text-decoration: none;
-  }
-}
-
-@mixin delete_outline{
-  &:focus,&:active,&.slick-slide:focus{
-    outline: none !important;
-  }
-}
-
-@mixin delete_hr{
-  margin-top: 0rem;
-  margin-bottom: 0rem;
-  border: 0;
-  border-top: 0px solid transparent;
-}
