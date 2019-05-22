@@ -25,7 +25,6 @@
 }
 
 //Fonts
-
 @mixin fluid-typography($max-font-size,$min-font-size,$max-vw:$width-xl,$min-vw:$width-md){
   $u1: unit($min-vw);
   $u2: unit($max-vw);
@@ -43,4 +42,20 @@
       }
     }
   }
+}
+
+//View Point
+@mixin vh($property,$dimension,$max-vh: $height-xl){
+
+  $dimension: strip-unit($dimension);
+  $max-vh: strip-unit($max-vh);
+
+  $calculate: (100 * $dimension) / $max-vh;
+
+  #{$property}: $calculate + vh;
+
+  @media (min-height: $max-vh + px){
+    #{$property}: $dimension + px;
+  }
+
 }

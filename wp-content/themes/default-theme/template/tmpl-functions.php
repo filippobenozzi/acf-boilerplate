@@ -60,3 +60,16 @@
         wp_enqueue_style('my-theme-script', $my_style_url, array(), $my_style_mod);
     }
     add_action('wp_enqueue_scripts','my_style_enq');
+
+    //
+    //  Get SVG image
+    //
+    function get_svg($name, $path_folder = ''){
+
+        if($path_folder == ''){
+            $path_folder = get_template_directory() . '/images/svg/';
+        }
+
+        return file_get_contents($path_folder . $name . '.svg');
+
+    }

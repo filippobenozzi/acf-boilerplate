@@ -7,9 +7,18 @@ $width-md: 768; //Bootstrap 4 standard
 $width-lg: 992; //Bootstrap 4 standard
 $width-xl: 1200; //Bootstrap 4 standard or 1200
 
+$height-xl: 768px;
+
 //
 //  Font size
 //
 
 $size-font-base: 16;
 $size-font-base-mobile: 14;
+
+//
+//  Path
+//
+
+$path-image: "../../../images/";
+$path-svg: "../../../images/svg/";
