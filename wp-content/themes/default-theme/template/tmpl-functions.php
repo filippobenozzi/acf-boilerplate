@@ -12,14 +12,16 @@
     wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?&key='.get_field('google_maps_api','option').'&libraries=places', array(), '', true);
 
     //
+    //  Print pretty array
+    //
+    function print_pretty_array($variable){
+        return print("<pre>".print_r($variable,true)."</pre>");
+    }
+
+    //
     //  Render image with custom size
     //
-    function get_image_size($field_name,$size,$page_id=false){
-        $field = get_field($field_name, $page_id);
-        return $field['sizes'][$size];
-    }
-    function get_sub_image_size($field_name,$size,$page_id=false){
-        $field = get_sub_field($field_name, $page_id);
+    function get_image_size($field,$size){
         return $field['sizes'][$size];
     }
 

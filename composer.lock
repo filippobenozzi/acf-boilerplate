@@ -128,16 +128,16 @@
         },
         {
             "name": "wpackagist-plugin/better-wp-security",
-            "version": "7.3.3",
+            "version": "7.4.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/better-wp-security/",
-                "reference": "tags/7.3.3"
+                "reference": "tags/7.4.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/better-wp-security.7.3.3.zip",
-                "reference": "tags/7.3.3",
+                "url": "https://downloads.wordpress.org/plugin/better-wp-security.7.4.0.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -157,7 +157,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/cf7-invisible-recaptcha.1.3.3.zip",
-                "reference": "tags/1.3.3",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -168,16 +168,16 @@
         },
         {
             "name": "wpackagist-plugin/classic-editor",
-            "version": "1.4",
+            "version": "1.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/classic-editor/",
-                "reference": "tags/1.4"
+                "reference": "tags/1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/classic-editor.1.4.zip",
-                "reference": "tags/1.4",
+                "url": "https://downloads.wordpress.org/plugin/classic-editor.1.5.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -188,16 +188,16 @@
         },
         {
             "name": "wpackagist-plugin/contact-form-7",
-            "version": "5.1.1",
+            "version": "5.1.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/contact-form-7/",
-                "reference": "tags/5.1.1"
+                "reference": "tags/5.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/contact-form-7.5.1.1.zip",
-                "reference": "tags/5.1.1",
+                "url": "https://downloads.wordpress.org/plugin/contact-form-7.5.1.3.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -217,7 +217,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/contact-form-submissions.1.6.2.zip",
-                "reference": "tags/1.6.2",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -237,7 +237,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/cookie-notice.1.2.46.zip",
-                "reference": "tags/1.2.46",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -256,8 +256,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/duplicate-page.zip?timestamp=1554102774",
-                "reference": "trunk",
+                "url": "https://downloads.wordpress.org/plugin/duplicate-page.zip?timestamp=1557836256",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -277,7 +277,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/duracelltomi-google-tag-manager.1.9.2.zip",
-                "reference": "tags/1.9.2",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -288,15 +288,15 @@
         },
         {
             "name": "wpackagist-plugin/login-recaptcha",
-            "version": "1.6.3",
+            "version": "1.6.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/login-recaptcha/",
-                "reference": "tags/1.6.3"
+                "reference": "tags/1.6.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/login-recaptcha.1.6.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/login-recaptcha.1.6.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -308,16 +308,16 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "4.2.3",
+            "version": "4.3.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/4.2.3"
+                "reference": "tags/4.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.4.2.3.zip",
-                "reference": "tags/4.2.3",
+                "url": "https://downloads.wordpress.org/plugin/redirection.4.3.1.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -337,7 +337,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/svg-support.2.3.15.zip",
-                "reference": "tags/2.3.15",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -348,16 +348,16 @@
         },
         {
             "name": "wpackagist-plugin/tinymce-advanced",
-            "version": "5.2.0",
+            "version": "5.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/tinymce-advanced/",
-                "reference": "trunk"
+                "reference": "tags/5.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/tinymce-advanced.zip?timestamp=1557295854",
-                "reference": "trunk",
+                "url": "https://downloads.wordpress.org/plugin/tinymce-advanced.5.2.1.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -377,7 +377,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/wp-fastest-cache.0.8.9.3.zip",
-                "reference": "tags/0.8.9.3",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -397,7 +397,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/wps-hide-login.1.5.2.1.zip",
-                "reference": "tags/1.5.2.1",
+                "reference": null,
                 "shasum": null
             },
             "require": {
