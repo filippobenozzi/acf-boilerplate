@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "gulp default --theme=default-theme",
+    "develop": "gulp default --theme=default-theme",
     "production": "gulp prod"
   },
   "author": "",

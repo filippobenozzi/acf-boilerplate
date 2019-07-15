@@ -6,4 +6,3 @@
     //    add_image_size( 'icon', 60, 60, true );
     //    add_image_size( 'news', 570, 350, true );
     //    add_image_size( 'soluzioni', 555, 400, true );
-?>
