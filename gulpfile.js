@@ -3,16 +3,21 @@ var browserSync = require('browser-sync');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
+var sass = require("gulp-sass");
 var plugins = require('gulp-load-plugins');
 var source = require('vinyl-source-stream');
 var gutil = require('gulp-util');
+require('dotenv').config({path: '.env.local'});
+require('dotenv').config({path: '.env'});
+
+var packageImporter = require('node-sass-package-importer');
 
 /* ----------------- */
 /* Path
 /* ----------------- */
 
-var themeName = gutil.env.theme;
-var urlSite = gutil.env.url;
+var themeName = process.env.THEME_NAME;
+var urlSite = process.env.LOCAL_DOMAIN;
 var themeAssetPath = 'wp-content/themes/'+themeName+'/assets';
 
 /* ----------------- */
@@ -78,29 +83,11 @@ gulp.task('scripts', () => {
 gulp.task('styles', () => {
     return gulp.src(themeAssetPath + '/src/sass/**/*.scss')
         .pipe(plugins().sourcemaps.init())
-        .pipe(plugins().sass().on('error', plugins().sass.logError))
+        .pipe(sass({importer: packageImporter()}).on('error', sass.logError))
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest(themeAssetPath + '/dist/css'))
         .pipe(browserSync.stream());
 });
-
-
-/* ----------------- */
-/* HTML
-/* ----------------- */
-
-// gulp.task('html', ['cssmin'], () => {
-//     return gulp.src('index.html')
-//         .pipe(critical.stream({
-//             'base': 'build/',
-//             'inline': true,
-//             'extract': true,
-//             'minify': true,
-//             'css': ['./build/css/style.css']
-//         }))
-//         .pipe(gulp.dest('build'));
-// });
-
 
 /* ----------------- */
 /* Cssmin
@@ -108,9 +95,10 @@ gulp.task('styles', () => {
 
 gulp.task('cssmin', () => {
     return gulp.src(themeAssetPath + '/src/sass/**/*.scss')
-        .pipe(plugins().sass({
-            'outputStyle': 'compressed'
-        }).on('error', plugins().sass.logError))
+        .pipe(sass({
+            'outputStyle': 'compressed',
+            importer: packageImporter()
+        }).on('error', sass.logError))
         .pipe(gulp.dest(themeAssetPath + '/dist/css'));
 });
 
