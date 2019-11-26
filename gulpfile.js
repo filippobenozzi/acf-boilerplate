@@ -12,6 +12,7 @@ var gutil = require('gulp-util');
 /* ----------------- */
 
 var themeName = gutil.env.theme;
+var urlSite = gutil.env.url;
 var themeAssetPath = 'wp-content/themes/'+themeName+'/assets';
 
 /* ----------------- */
@@ -19,8 +20,9 @@ var themeAssetPath = 'wp-content/themes/'+themeName+'/assets';
 /* ----------------- */
 
 gulp.task('development', ['scripts', 'styles'], () => {
+
     browserSync({
-        'server': './',
+        proxy: urlSite,
         'snippetOptions': {
             'rule': {
                 'match': /<\/body>/i,
@@ -31,7 +33,7 @@ gulp.task('development', ['scripts', 'styles'], () => {
 
     gulp.watch(themeAssetPath + '/src/sass/**/*.scss', ['styles']);
     gulp.watch(themeAssetPath + '/src/js/**/*.js', ['scripts']);
-    gulp.watch('./*.php', browserSync.reload);
+    gulp.watch('wp-content/themes/**/*.php', browserSync.reload);
 });
 
 

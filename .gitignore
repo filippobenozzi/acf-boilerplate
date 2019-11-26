@@ -31,3 +31,5 @@ wp-content/themes/*/assets/dist/js/*.js
 bash.exe.stackdump
 /prepros-*.config
 vendor
+*.map
+wp-content/themes/twentytwenty/*
