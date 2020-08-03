@@ -17,8 +17,6 @@ wp-content/plugins/*
 !wp-content/plugins/index.php
 
 .idea
-yarn.lock
-package-lock.json
 /.htaccess
 /license.txt
 /readme.html
