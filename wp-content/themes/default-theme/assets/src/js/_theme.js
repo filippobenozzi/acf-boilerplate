@@ -1,8 +1,8 @@
-import $ from 'jquery';
+//import $ from 'jquery';
 
 //
 //  Custom JS Theme
 //
 
 
-$('.asasdd').hide();
+//$('.asasdd').hide();
