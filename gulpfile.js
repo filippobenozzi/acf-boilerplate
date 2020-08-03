@@ -21,32 +21,10 @@ var urlSite = process.env.LOCAL_DOMAIN;
 var themeAssetPath = 'wp-content/themes/'+themeName+'/assets';
 
 /* ----------------- */
-/* Development
-/* ----------------- */
-
-gulp.task('development', ['scripts', 'styles'], () => {
-
-    browserSync({
-        proxy: urlSite,
-        'snippetOptions': {
-            'rule': {
-                'match': /<\/body>/i,
-                'fn': (snippet) => snippet
-            }
-        }
-    });
-
-    gulp.watch(themeAssetPath + '/src/sass/**/*.scss', ['styles']);
-    gulp.watch(themeAssetPath + '/src/js/**/*.js', ['scripts']);
-    gulp.watch('wp-content/themes/**/*.php', browserSync.reload);
-});
-
-
-/* ----------------- */
 /* Scripts
 /* ----------------- */
 
-gulp.task('scripts', () => {
+gulp.task('scripts', function () {
     return browserify({
         'entries': [themeAssetPath + '/src/js/main.js'],
         'debug': true,
@@ -80,7 +58,7 @@ gulp.task('scripts', () => {
 /* Styles
 /* ----------------- */
 
-gulp.task('styles', () => {
+gulp.task('styles', function() {
     return gulp.src(themeAssetPath + '/src/sass/**/*.scss')
         .pipe(plugins().sourcemaps.init())
         .pipe(sass({importer: packageImporter()}).on('error', sass.logError))
@@ -93,7 +71,7 @@ gulp.task('styles', () => {
 /* Cssmin
 /* ----------------- */
 
-gulp.task('cssmin', () => {
+gulp.task('cssmin', function() {
     return gulp.src(themeAssetPath + '/src/sass/**/*.scss')
         .pipe(sass({
             'outputStyle': 'compressed',
@@ -107,7 +85,7 @@ gulp.task('cssmin', () => {
 /* Jsmin
 /* ----------------- */
 
-gulp.task('jsmin', () => {
+gulp.task('jsmin', function() {
     var envs = plugins().env.set({
         'NODE_ENV': 'production'
     });
@@ -131,8 +109,30 @@ gulp.task('jsmin', () => {
 });
 
 /* ----------------- */
+/* Development
+/* ----------------- */
+
+gulp.task('development', function(done) {
+
+    browserSync({
+        proxy: urlSite,
+        'snippetOptions': {
+            'rule': {
+                'match': /<\/body>/i,
+                'fn': (snippet) => snippet
+            }
+        }
+    });
+
+    gulp.watch(themeAssetPath + '/src/sass/**/*.scss', gulp.series('styles'));
+    gulp.watch(themeAssetPath + '/src/js/**/*.js', gulp.series('scripts'));
+    gulp.watch('wp-content/themes/**/*.php', browserSync.reload);
+    done();
+});
+
+/* ----------------- */
 /* Taks
 /* ----------------- */
 
-gulp.task('default', ['development']);
-gulp.task('deploy', ['cssmin', 'jsmin']);
+gulp.task('default', gulp.series('development'));
+gulp.task('deploy', gulp.series('cssmin', 'jsmin'));

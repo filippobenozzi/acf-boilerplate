@@ -2,8 +2,8 @@
 // Load jQuery plugins
 //
 
-import 'bootstrap';
-import 'arrive';
+//import 'bootstrap';
+//import 'arrive';
 
 //
 //  Load custom js
