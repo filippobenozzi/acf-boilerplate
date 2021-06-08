@@ -14,19 +14,18 @@
         {
             "type": "package",
             "package": {
-              "name": "advanced-custom-fields/advanced-custom-fields-pro",
-              "version": "*.*.*(.*)",
-              "type": "wordpress-plugin",
-              "dist": {
-                "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download"
-              },
-              "require": {
-                "philippbaschke/acf-pro-installer": "^1.0",
-                "composer/installers": "^1.0"
-              }
+                "name": "advanced-custom-fields/advanced-custom-fields-pro",
+                "version": "5.9.6",
+                "type": "wordpress-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k={%ACF_PRO_KEY}&t={%version}"
+                },
+                "require": {
+                    "ffraenz/private-composer-installer": "^5.0"
+                }
             }
-          }
+        }
     ],
     "require": {
         "wpackagist-plugin/better-wp-security": "*",
