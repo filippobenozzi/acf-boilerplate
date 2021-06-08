@@ -12,7 +12,7 @@
 
 4. Enjoy
 
-### Commands for gulp
+### Commands for Gulp
 
 - Run `npm run develop` when you develop your website. Gulp will watch your file changes.
 
