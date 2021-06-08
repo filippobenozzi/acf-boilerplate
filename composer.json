@@ -26,6 +26,7 @@
         "wpackagist-plugin/wps-hide-login": "*",
         "wpackagist-plugin/duracelltomi-google-tag-manager": "*",
         "wpackagist-plugin/cf7-invisible-recaptcha": "*",
-        "wpackagist-plugin/login-recaptcha": "*"
+        "wpackagist-plugin/login-recaptcha": "*",
+        "wpackagist-plugin/popup-notifier-for-contact-form-7": "*"
     }
 }
