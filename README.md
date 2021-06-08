@@ -1,5 +1,6 @@
 # ACF Boilerplate
 
+**NB.** This project require an ACF PRO license key and *Node 12*.
 ### Installation
 
 1. Download the repository.
