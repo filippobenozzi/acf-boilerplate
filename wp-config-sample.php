@@ -3,22 +3,17 @@
  * Il file base di configurazione di WordPress.
  *
  * Questo file viene utilizzato, durante l’installazione, dallo script
- * di creazione di wp-config.php. Non è necessario utilizzarlo solo via
- * web, è anche possibile copiare questo file in «wp-config.php» e
- * riempire i valori corretti.
+ * di creazione di wp-config.php. Non è necessario utilizzarlo solo via web
+ * puoi copiare questo file in «wp-config.php» e riempire i valori corretti.
  *
  * Questo file definisce le seguenti configurazioni:
  *
  * * Impostazioni MySQL
- * * Prefisso Tabella
  * * Chiavi Segrete
+ * * Prefisso Tabella
  * * ABSPATH
  *
- * È possibile trovare ultetriori informazioni visitando la pagina del Codex:
- *
- * @link https://codex.wordpress.org/it:Modificare_wp-config.php
- *
- * È possibile ottenere le impostazioni per MySQL dal proprio fornitore di hosting.
+ * * @link https://wordpress.org/support/article/editing-wp-config-php/
  *
  * @package WordPress
  */
@@ -74,10 +69,14 @@ $table_prefix = 'wp_';
 /**
  * Per gli sviluppatori: modalità di debug di WordPress.
  *
- * Modificare questa voce a TRUE per abilitare la visualizzazione degli avvisi
- * durante lo sviluppo.
+ * Modificare questa voce a TRUE per abilitare la visualizzazione degli avvisi durante lo sviluppo
  * È fortemente raccomandato agli svilupaptori di temi e plugin di utilizare
  * WP_DEBUG all’interno dei loro ambienti di sviluppo.
+ *
+ * Per informazioni sulle altre costanti che possono essere utilizzate per il debug,
+ * leggi la documentazione
+ *
+ * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 define('WP_DEBUG', false);
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f876d894ff1158b08acd88d105b6b4f0",
+    "content-hash": "f5490637e8a75c605a5cdb1632a57532",
     "packages": [
         {
             "name": "composer/installers",
@@ -317,6 +317,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/login-recaptcha/"
+        },
+        {
+            "name": "wpackagist-plugin/popup-notifier-for-contact-form-7",
+            "version": "1.2.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/popup-notifier-for-contact-form-7/",
+                "reference": "tags/1.2.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/popup-notifier-for-contact-form-7.1.2.5.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/popup-notifier-for-contact-form-7/"
         },
         {
             "name": "wpackagist-plugin/redirection",
