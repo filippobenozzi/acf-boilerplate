@@ -32,3 +32,4 @@ vendor
 wp-content/themes/twentytwenty/*
 .DS_Store
 .env
+package-lock.json

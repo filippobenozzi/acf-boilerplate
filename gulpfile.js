@@ -4,9 +4,13 @@ var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
 var sass = require("gulp-sass");
+var autoprefixer = require('gulp-autoprefixer');
+var postcss = require('gulp-postcss');
 var plugins = require('gulp-load-plugins');
 var source = require('vinyl-source-stream');
 var gutil = require('gulp-util');
+var postcssImport = require('postcss-import');
+var tailwind = require('tailwindcss');
 require('dotenv').config({path: '.env.local'});
 require('dotenv').config({path: '.env'});
 
@@ -62,6 +66,10 @@ gulp.task('styles', function() {
     return gulp.src(themeAssetPath + '/src/sass/**/*.scss')
         .pipe(plugins().sourcemaps.init())
         .pipe(sass({importer: packageImporter()}).on('error', sass.logError))
+        .pipe(postcss([
+            tailwind('./tailwind.config.js'),
+            require( 'autoprefixer' ) ]))
+        .pipe(autoprefixer())
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest(themeAssetPath + '/dist/css'))
         .pipe(browserSync.stream());
