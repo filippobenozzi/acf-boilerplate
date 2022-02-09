@@ -24,6 +24,7 @@ wp-content/plugins/*
 
 wp-content/themes/*/assets/dist/css/*.css
 wp-content/themes/*/assets/dist/js/*.js
+wp-content/themes/*/assets/dist/js/*.js.map
 /.gtm/
 bash.exe.stackdump
 /prepros-*.config
