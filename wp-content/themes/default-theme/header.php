@@ -32,7 +32,7 @@
 <body lang="it">
 
     <section id="infocontent" style="display: none">
-        <h3><a href="http://www.dinamiza.it/" target="_blank" title="Web agency">Dinamiza</a></h3>
+        <h3><a href="https://filippo.im/" target="_blank" title="Filippo Benozzi">Filippo Benozzi</a></h3>
     </section><!--infocontent-->
 
     <?php render_theme_block('navbar'); ?>

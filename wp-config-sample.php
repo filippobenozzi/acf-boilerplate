@@ -8,7 +8,7 @@
  *
  * Questo file definisce le seguenti configurazioni:
  *
- * * Impostazioni MySQL
+ * * Impostazioni database
  * * Chiavi Segrete
  * * Prefisso Tabella
  * * ABSPATH
@@ -18,17 +18,17 @@
  * @package WordPress
  */
 
-// ** Impostazioni MySQL - È possibile ottenere queste informazioni dal proprio fornitore di hosting ** //
+// ** Impostazioni database - È possibile ottenere queste informazioni dal proprio fornitore di hosting ** //
 /** Il nome del database di WordPress */
 define('DB_NAME', 'nome_del_database_qui');
 
-/** Nome utente del database MySQL */
+/** Nome utente del database */
 define('DB_USER', 'nome_utente_qui');
 
-/** Password del database MySQL */
+/** Password del database */
 define('DB_PASSWORD', 'password_qui');
 
-/** Hostname MySQL  */
+/** Hostname del database */
 define('DB_HOST', 'localhost');
 
 /** Charset del Database da utilizzare nella creazione delle tabelle. */

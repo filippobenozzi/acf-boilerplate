@@ -9,9 +9,9 @@
 // Lib
 
 @import "reset";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+@import "~tailwindcss/utilities";
 
 // Function, mixin
 
@@ -22,7 +22,7 @@
 //  Common style
 
 @import "DOM";
-.test{ color: red; }
+
 //  Componets
 
 //  Blocks

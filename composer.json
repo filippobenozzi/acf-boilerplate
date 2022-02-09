@@ -15,11 +15,11 @@
             "type": "package",
             "package": {
                 "name": "advanced-custom-fields/advanced-custom-fields-pro",
-                "version": "5.9.6",
+                "version": "2",
                 "type": "wordpress-plugin",
                 "dist": {
                     "type": "zip",
-                    "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k={%ACF_PRO_KEY}&t={%version}"
+                    "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k={%ACF_PRO_KEY}"
                 },
                 "require": {
                     "ffraenz/private-composer-installer": "^5.0"

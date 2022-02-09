@@ -4,17 +4,17 @@ var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
 var sass = require("gulp-sass");
-var autoprefixer = require('gulp-autoprefixer');
 var postcss = require('gulp-postcss');
 var plugins = require('gulp-load-plugins');
 var source = require('vinyl-source-stream');
 var gutil = require('gulp-util');
 var postcssImport = require('postcss-import');
-var tailwind = require('tailwindcss');
+var tailwind = require("tailwindcss");
+var autoprefixer = require("autoprefixer");
+var cssnano = require('cssnano');
+var packageImporter = require('node-sass-package-importer');
 require('dotenv').config({path: '.env.local'});
 require('dotenv').config({path: '.env'});
-
-var packageImporter = require('node-sass-package-importer');
 
 /* ----------------- */
 /* Path
@@ -66,10 +66,10 @@ gulp.task('styles', function() {
     return gulp.src(themeAssetPath + '/src/sass/**/*.scss')
         .pipe(plugins().sourcemaps.init())
         .pipe(sass({importer: packageImporter()}).on('error', sass.logError))
+        .pipe(gulp.dest(themeAssetPath + '/dist/css'))
         .pipe(postcss([
-            tailwind('./tailwind.config.js'),
-            require( 'autoprefixer' ) ]))
-        .pipe(autoprefixer())
+            tailwind(),
+            autoprefixer() ]))
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest(themeAssetPath + '/dist/css'))
         .pipe(browserSync.stream());
@@ -82,9 +82,13 @@ gulp.task('styles', function() {
 gulp.task('cssmin', function() {
     return gulp.src(themeAssetPath + '/src/sass/**/*.scss')
         .pipe(sass({
-            'outputStyle': 'compressed',
             importer: packageImporter()
         }).on('error', sass.logError))
+        .pipe(gulp.dest(themeAssetPath + '/dist/css'))
+        .pipe(postcss([
+            tailwind(),
+            autoprefixer(),
+            cssnano() ]))
         .pipe(gulp.dest(themeAssetPath + '/dist/css'));
 });
 
@@ -134,7 +138,7 @@ gulp.task('development', function(done) {
 
     gulp.watch(themeAssetPath + '/src/sass/**/*.scss', gulp.series('styles'));
     gulp.watch(themeAssetPath + '/src/js/**/*.js', gulp.series('scripts'));
-    gulp.watch('wp-content/themes/**/*.php', browserSync.reload);
+    gulp.watch('wp-content/themes/**/*.php', gulp.series('styles'));
     done();
 });
 
@@ -143,4 +147,4 @@ gulp.task('development', function(done) {
 /* ----------------- */
 
 gulp.task('default', gulp.series('development'));
-gulp.task('deploy', gulp.series('cssmin', 'jsmin'));
+gulp.task('prod', gulp.series('cssmin', 'jsmin'));
