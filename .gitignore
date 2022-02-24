@@ -34,3 +34,4 @@ wp-content/themes/twentytwenty/*
 .DS_Store
 .env
 package-lock.json
+!wp-content/plugins/*/vendor
