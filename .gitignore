@@ -7,12 +7,12 @@ wp-content/blogs.dir/
 wp-content/cache/
 wp-content/upgrade/
 wp-content/uploads/
+wp-content/upgrade-temp-backup/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
 wp-snapshot/
 node_modules/
 wp-content/plugins/wp-updates-settings
-wp-content/plugins/*
 !wp-content/plugins/index.php
 
 .idea
@@ -28,9 +28,11 @@ wp-content/themes/*/assets/dist/js/*.js.map
 /.gtm/
 bash.exe.stackdump
 /prepros-*.config
-vendor
+/vendor
 *.map
-wp-content/themes/twentytwenty/*
+wp-content/themes/*
+!wp-content/themes/nehos-theme
+!wp-content/themes/index.php
 .DS_Store
 .env
 package-lock.json

@@ -68,7 +68,6 @@ gulp.task('styles', function() {
         .pipe(sass({importer: packageImporter()}).on('error', sass.logError))
         .pipe(gulp.dest(themeAssetPath + '/dist/css'))
         .pipe(postcss([
-            tailwind(),
             autoprefixer() ]))
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest(themeAssetPath + '/dist/css'))
@@ -86,7 +85,6 @@ gulp.task('cssmin', function() {
         }).on('error', sass.logError))
         .pipe(gulp.dest(themeAssetPath + '/dist/css'))
         .pipe(postcss([
-            tailwind(),
             autoprefixer(),
             cssnano() ]))
         .pipe(gulp.dest(themeAssetPath + '/dist/css'));
