@@ -1,0 +1,58 @@
+{
+    "name": "filippoim/acf-boilerplate",
+    "authors": [
+      {
+        "name": "Filippo Benozzi",
+        "email": "email@filippo.im"
+      }
+    ],
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://wpackagist.org" 
+      },
+      {
+        "type":"composer",
+        "url":"https://connect.advancedcustomfields.com"
+      }
+    ],
+    "require": {
+      "php": ">=7.4",
+      "composer/installers": "^2.0",
+      "johnpbloch/wordpress": "*",
+      "wpackagist-plugin/better-wp-security": "*",
+      "wpackagist-plugin/classic-editor": "*",
+      "wpackagist-plugin/contact-form-7": "*",
+      "wpackagist-plugin/contact-form-submissions": "*",
+      "wpackagist-plugin/duplicate-page": "*",
+      "wpackagist-plugin/duracelltomi-google-tag-manager": "*",
+      "wpackagist-plugin/login-recaptcha": "*",
+      "wpackagist-plugin/popup-notifier-for-contact-form-7": "*",
+      "wpackagist-plugin/redirection": "*",
+      "wpackagist-plugin/svg-support": "*",
+      "wpackagist-plugin/wordpress-seo": "*",
+      "wpengine/advanced-custom-fields-pro": "*"
+    },
+    "extra": {
+      "wordpress-install-dir": "wp", 
+      "installer-paths": {
+        "wp-content/plugins/{$name}/": [
+          "type:wordpress-plugin"
+        ],
+        "wp-content/themes/{$name}/": [
+          "type:wordpress-theme"
+        ]
+      }
+    },
+    "config": {
+        "allow-plugins": {
+            "johnpbloch/wordpress-core-installer": true,
+            "composer/installers": true
+        }
+    },
+    "scripts": {
+    "post-update-cmd": [
+            "rm -rf wp/composer.json wp/composer.lock && cp -R wp/ . && rm -rf wp vendor composer.lock"
+        ]
+    }
+}

@@ -31,7 +31,7 @@ bash.exe.stackdump
 /vendor
 *.map
 wp-content/themes/*
-!wp-content/themes/nehos-theme
+!wp-content/themes/default-theme
 !wp-content/themes/index.php
 .DS_Store
 .env
