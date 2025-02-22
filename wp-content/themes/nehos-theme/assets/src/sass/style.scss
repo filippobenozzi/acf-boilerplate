@@ -2,26 +2,27 @@
 //  Style - Include
 //
 
-@import "~bootstrap";
+@use "bootstrap";
+@use "bootstrap-italia"; 
 
 // Variables and Fonts
 
-@import "variables";
-@import "fonts";
+@use "variables";
+@use "fonts";
 
 // Lib
 
-@import "reset";
+@use "reset";
 
 // Function, mixin
 
-@import "functions";
-@import "mixin";
-@import "media-query";
+@use "functions";
+@use "mixin";
+@use "media-query";
 
 //  Common style
 
-@import "DOM";
+@use "DOM";
 
 //  Componets
 
