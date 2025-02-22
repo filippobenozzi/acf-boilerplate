@@ -20,7 +20,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, `wp-content/themes/${THEME_NAME}/assets/dist`),
-    filename: 'js/[name].bundle.js',
+    filename: 'js/bundle.js',
     clean: true,
   },
 
@@ -70,7 +70,7 @@ module.exports = {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: 'css/style.css',
     }),
     new webpack.DefinePlugin({
       'process.env.LOCAL_DOMAIN': JSON.stringify(LOCAL_DOMAIN),
@@ -79,6 +79,9 @@ module.exports = {
   ],
 
   devServer: {
+    devMiddleware: {
+      writeToDisk: true
+    },
     proxy: [
       {
         context: () => true,
